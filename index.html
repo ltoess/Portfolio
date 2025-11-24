@@ -1,0 +1,156 @@
+<!DOCTYPE html> <!-- this is how comments look, use ctrl + / shortcut-->
+<html lang = "en" class="scroll-smooth">
+<head> 
+    <meta charset = "UTF-8" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Google Fonts Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body> 
+
+    <!-- top bar basically -->
+    <header> 
+        <h3>Luke Oess</h3>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#" id="contact-btn">Contact</a>
+            <!-- BUTTON FUNCTION BELOW -->
+            <button onclick="toggleTheme()">☀︎</button>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main> 
+        <section class="hero">
+            <img src="pfp.jpg" alt="Luke Oess" class="profile-pic">
+
+            <h1>Hi, I'm Luke!</h1>
+            <p>I'm a second year Computer Science major with a minor in Mathematics. I will be interning at COUNTRY Financial this summer!</p>
+            <p>Technologies: Java, C++, Python, HTML & CSS</p>
+        </section>
+
+        <section id="projects">
+            <h2>My Projects</h2>   <!-- this creates projects header and centers it -->
+
+
+            <div class="projects-container"> 
+
+                <!-- Project 1 Section, create a div  -->
+                <div class="project-card">
+                    <h3>SpinLog (WIP)</h3>
+                    <p>A vinyl record logging system I'm building in Python with SQL.</p>
+
+                    <a href="https://github.com/ltoess/SpinLog" target="_blank" class="github-link"> 
+                        <img src="githubLogo.png" alt="View on Github"> 
+                    </a>
+                </div> 
+
+                <div class="project-card"> 
+                    <h3>ExpenseTracker</h3>
+                    <p>A simple CLI personal budgeting app I built in Java.</p>
+
+                    <!-- link button -->
+                    <a href="https://github.com/ltoess/ExpenseTracker" target="_blank" class="github-link"> 
+                        <img src="githubLogo.png" alt="View on Github"> 
+                    </a>
+                </div>
+                
+                
+
+                <div class="project-card">
+                    <h3>Gadget Factory Store Simulator</h3>
+                    <p>An exercise in DSA that uses Stacks, Queues, and Lists with ArrayDeque Interface in Java.</p>
+                    <a href="https://github.com/ltoess/gadget-factory-store" target="_blank" class="github-link"> 
+                        <img src="githubLogo.png" alt="View on Github"> 
+                    </a>
+                </div>
+                <!-- Make one of these the website itself -->
+            </div>
+        </section>
+    </main>
+
+
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Let's Connect</h2>
+            <p>I'd love to hear from you!</p>
+
+            <div class="social-links"> 
+                <!-- copy email  -->
+                <div class="copy-email-box" onclick="copyEmail()">
+                    <span id="email-text">lukeoess@gmail.com </span>
+                    <span id="copy-icon">📋</span>
+                </div>
+                <!-- social buttons  -->
+                <a href="https://www.linkedin.com/in/luke-oess/" target="_blank" class="social-btn-linkedin">
+                    <img src="linkedinLogo.png" alt="LinkedIn">
+                </a>
+
+                <a href="https://github.com/ltoess" target="_blank" class="social-btn-github"> 
+                    <img src="githubTextLogo.png" alt="GitHub">
+                </a>
+            </div>
+
+
+            
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy;2025 Luke Oess</p>
+    </footer>
+
+    <!-- JAVASCRIPT (logical part) -->
+    <script> 
+        // dark mode
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode"); 
+        }
+
+        // modal
+        const modal = document.getElementById("contact-modal"); 
+        const btn = document.getElementById("contact-btn");
+        const span = document.getElementsByClassName("close-modal")[0]; 
+
+        //open
+        btn.onclick = function() {
+            modal.style.display = "flex";
+        }
+
+        // close modal (x button)
+        span.onclick = function() {
+            modal.style.display = "none"; 
+        }
+
+        // close if clicking outside box
+        window.onclick = function(event) {
+            if(event.target==modal) modal.style.display = "none"; 
+        }
+
+        //email logic
+        function copyEmail() {
+            const email = document.getElementById("email-text").innerText; 
+
+            //copy
+            navigator.clipboard.writeText(email); 
+
+            const icon = document.getElementById("copy-icon");
+            const originalText = icon.innerText;
+
+            icon.innerText = "📋Copied!"; 
+            setTimeout(() => { icon.innerText = originalText;}, 2000);            
+        }
+
+    </script>
+
+</body>
+</html>
